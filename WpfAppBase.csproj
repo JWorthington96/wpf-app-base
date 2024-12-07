@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
-    <RootNamespace>DrinkingBuddy</RootNamespace>
+    <TargetFramework>net8.0-windows10.0.18362.0</TargetFramework>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <RootNamespace>WpfAppBase</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,11 +16,17 @@
 
   <ItemGroup>
     <ApplicationDefinition Include="Infrastructure\App.xaml" />
+
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

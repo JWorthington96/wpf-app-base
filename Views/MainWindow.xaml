@@ -18,7 +18,7 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Title="WpfAppBase"
-        Height="450" Width="800">
+        Height="720" Width="1280">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,45 +27,48 @@
             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignIconForegroundButton}"/>
         </ResourceDictionary>
     </Window.Resources>
-    
-    <DockPanel HorizontalAlignment="Stretch"
-               VerticalAlignment="Stretch">
-        <!--App top bar-->
-        <StackPanel DockPanel.Dock="Top"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Stretch"
-                    FlowDirection="RightToLeft"
-                    Background="{DynamicResource MaterialDesign.Brush.Primary.Light}"
-                    MouseDown="TopBarMouseDown">
-            <Button HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Click="CloseApp">
-                <materialDesign:PackIcon Kind="Close"/>
-            </Button>
 
-            <Button HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Click="RestoreApp">
-                <materialDesign:PackIcon 
-                    x:Name="RestoreIcon"
-                    Kind="WindowMaximize"/>
-            </Button>
+    <Border Style="{StaticResource WindowMainPanelStyle}">
+        <DockPanel HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch">
+            <!--App top bar-->
+            <ContentControl DockPanel.Dock="Top"
+                            MouseDown="TopBarMouseDown"
+                            MouseDoubleClick="RestoreApp">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Stretch"
+                            FlowDirection="RightToLeft"
+                            Background="{DynamicResource MaterialDesign.Brush.Primary.Light}">
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="CloseApp">
+                        <materialDesign:PackIcon Kind="Close"/>
+                    </Button>
 
-            <Button HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Click="MinimiseApp">
-                <materialDesign:PackIcon Kind="WindowMinimize"/>
-            </Button>
-        </StackPanel>
-        
-        <!--App side bar-->
-        <StackPanel DockPanel.Dock="Left"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Stretch"/>
-        
-        <!--App activity area-->
-        <StackPanel>
-            
-        </StackPanel>
-    </DockPanel>
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="RestoreApp">
+                        <materialDesign:PackIcon x:Name="RestoreIcon" Kind="WindowMaximize"/>
+                    </Button>
+
+                    <Button HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Click="MinimiseApp">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    </Button>
+                </StackPanel>
+            </ContentControl>
+
+
+            <!--App side bar-->
+            <StackPanel DockPanel.Dock="Left"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"/>
+
+            <!--App activity area-->
+            <StackPanel>
+
+            </StackPanel>
+        </DockPanel>
+    </Border>
 </Window>
