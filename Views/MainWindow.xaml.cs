@@ -1,5 +1,5 @@
-﻿using System.Runtime.InteropServices;
-using System;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
@@ -15,7 +15,7 @@ public partial class MainWindow : Window
     ///     Constructor for MainWindow.
     /// </summary>
     public MainWindow() => InitializeComponent();
-    
+
     private void TopBarMouseDown(object sender, MouseButtonEventArgs e)
     {
         if (e.ClickCount == 1)

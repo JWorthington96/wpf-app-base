@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppBase.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModels="clr-namespace:WpfAppBase.ViewModels;assembly=WpfAppBase"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowViewModel, IsDesignTimeCreatable=False}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Medium"
@@ -23,6 +25,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+
+                <ResourceDictionary Source="./DefaultActivityTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignIconForegroundButton}"/>
         </ResourceDictionary>
@@ -59,16 +63,13 @@
                 </StackPanel>
             </ContentControl>
 
-
             <!--App side bar-->
             <StackPanel DockPanel.Dock="Left"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Stretch"/>
 
             <!--App activity area-->
-            <StackPanel>
-
-            </StackPanel>
+            <ContentPresenter Content="{Binding ActivityViewModel}" />
         </DockPanel>
     </Border>
 </Window>

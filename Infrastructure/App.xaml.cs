@@ -1,6 +1,8 @@
-﻿using WpfAppBase.Views;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using WpfAppBase.Interfaces.Services;
+using WpfAppBase.ViewModels;
+using WpfAppBase.Views;
 
 namespace WpfAppBase.Infrastructure;
 
@@ -16,7 +18,10 @@ public partial class App : Application
         var bootstrapper = new Bootstrapper();
         bootstrapper.Start();
 
-        MainWindow = new MainWindow();
+        MainWindow = new MainWindow
+        {
+            DataContext = new MainWindowViewModel(bootstrapper.Host.Services.GetService<IExampleService>()!)
+        };
         MainWindow.Show();
     }
 }
