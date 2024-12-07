@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WpfAppBase.Interfaces.Services;
+using WpfAppBase.Services;
 
 namespace WpfAppBase.Infrastructure;
 
@@ -9,20 +11,27 @@ namespace WpfAppBase.Infrastructure;
 public class Bootstrapper
 {
     /// <summary>
-    ///     Builds and runs the host for dependency injection and configuration.
+    ///     Constructor for the bootstrapper.
     /// </summary>
-    public void Start()
+    public Bootstrapper()
     {
-        var host = Host.CreateDefaultBuilder()
-            .ConfigureServices((hostContext, services) => RegisterServices(services))
+        Host = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
+            .ConfigureServices((_, services) => RegisterServices(services))
             .Build();
-        host.RunAsync();
     }
 
-    // Register services for dependency injection here
-    private void RegisterServices(IServiceCollection services)
-    {
+    public IHost Host { get; init; }
 
+    /// <summary>
+    ///     Runs the host for dependency injection and configuration.
+    /// </summary>
+    public void Start() => Host.RunAsync();
+
+    // Register services for dependency injection here
+    private static void RegisterServices(IServiceCollection services)
+    {
+        // Services
+        services.AddScoped<IExampleService, ExampleService>();
     }
 }
 
