@@ -32,10 +32,11 @@
                VerticalAlignment="Stretch">
         <!--App top bar-->
         <StackPanel DockPanel.Dock="Top"
-                    Background="{DynamicResource MaterialDesign.Brush.Primary.Light}"
-                    FlowDirection="RightToLeft"
                     Orientation="Horizontal"
-                    HorizontalAlignment="Stretch">
+                    HorizontalAlignment="Stretch"
+                    FlowDirection="RightToLeft"
+                    Background="{DynamicResource MaterialDesign.Brush.Primary.Light}"
+                    MouseDown="TopBarMouseDown">
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Click="CloseApp">
@@ -45,7 +46,9 @@
             <Button HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Click="RestoreApp">
-                <materialDesign:PackIcon Kind="WindowMaximize"/>
+                <materialDesign:PackIcon 
+                    x:Name="RestoreIcon"
+                    Kind="WindowMaximize"/>
             </Button>
 
             <Button HorizontalAlignment="Right"
